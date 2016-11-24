@@ -7,7 +7,7 @@ sched = BlockingScheduler()
 q = Queue(connection=conn)
 
 
-@sched.scheduled_job('interval', minutes=3)
+@sched.scheduled_job('interval', minutes=5)
 def timed_job():
     result = q.enqueue(forward_emails)
     print('This job is run every three minutes.')
