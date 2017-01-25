@@ -3,6 +3,14 @@ import email, imaplib, smtplib, os
 amazon_email = os.getenv("amazon_email")
 amazon_password = os.getenv("amazon_password")
 
+name1 = os.getenv("name1")
+email1 = os.getenv("email1")
+
+name2 = os.getenv("name2")
+email2 = os.getenv("email2")
+
+name3 = os.getenv("name3")
+email3 = os.getenv("email3")
 
 def forward_emails():
     print "Forwarding emails..."
@@ -18,12 +26,12 @@ def forward_emails():
         resp, data = mail.fetch(email_id, "(RFC822)")
         email_body = data[0][1]
         to_addr = ""
-        if "Mark Millstein" in email_body:
-            to_addr = os.getenv("mark_email")
-        elif "Kara Millstein" in email_body:
-            to_addr = os.getenv("kara_email")
-        elif "Jeff Millstein" in email_body:
-            to_addr = os.getenv("jeff_email")
+        if name1 in email_body:
+            to_addr = email1
+        elif name2 in email_body:
+            to_addr = email2
+        elif name3 in email_body:
+            to_addr = email3
         if to_addr is not "":
             print "Sending to..." + to_addr
             message = email.message_from_string(email_body)
